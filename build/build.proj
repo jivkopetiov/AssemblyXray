@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <PropertyGroup>
+        <Root>$(MSBuildProjectDirectory)\..</Root>
+        <Build>$(Root)\build</Build>
+        <Src>$(Root)\src</Src>
+        <OutputDir>$(Root)\build.output</OutputDir>
+        <Lib>$(Root)\lib</Lib>
+		<FxCopPath>D:\Apps\_dev\Microsoft FxCop 1.36\FxCopCmd.exe</FxCopPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Configuration>RELEASE</Configuration>
+    </PropertyGroup>
+
+
+
+
+
+
+
+    <Target Name="Build">
+
+        <MSBuild Projects="$(Src)\AssemblyXray\AssemblyXray.csproj" Targets="Rebuild" Properties="OutputPath=$(OutputDir);Configuration=$(Configuration);"></MSBuild>
+
+		<Error Text="FxCopPath is invalid: $(FxCopPath)" Condition="!Exists('$(FxCopPath)')"></Error>
+			
+        <Exec Command="&quot;$(FxCopPath)&quot; /p:$(Build)\rules.FxCop /console /f:$(OutputDir)\AssemblyXray.exe"></Exec>
+
+    </Target>
+
+</Project>
