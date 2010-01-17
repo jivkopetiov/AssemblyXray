@@ -145,17 +145,11 @@ namespace AssemblyXray
             return AssemblyType.ConsoleApp;
         }
 
-        private ClrVersion CalculateClrVersion()
+        private string CalculateClrVersion()
         {
             string version = _assembly.ImageRuntimeVersion;
 
-            switch (version[1])
-            {
-                case '1': return ClrVersion.One;
-                case '2': return ClrVersion.Two;
-                case '4': return ClrVersion.Four;
-                default: throw new InvalidOperationException("Unknown Clr version: " + version);
-            }
+            return version;
         }
 
         private T GetAttribute<T>() where T : Attribute

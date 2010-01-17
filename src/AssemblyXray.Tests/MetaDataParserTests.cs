@@ -18,7 +18,7 @@ namespace AssemblyXray.Tests
 
             Assert.AreEqual(BuildType.Release, metadata.BuildType);
             Assert.AreEqual(Platform.x86, metadata.Platform);
-            Assert.AreEqual(ClrVersion.Four, metadata.ClrVersion);
+            Assert.AreEqual("v4.0.21006", metadata.ClrVersion);
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace AssemblyXray.Tests
 
             Assert.AreEqual(BuildType.Debug, metadata.BuildType);
             Assert.AreEqual(Platform.AnyCpu, metadata.Platform);
-            Assert.AreEqual(ClrVersion.Two, metadata.ClrVersion);
+            Assert.AreEqual("v2.0.50727", metadata.ClrVersion);
         }
 
         [Test]

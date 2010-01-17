@@ -20,7 +20,7 @@ namespace AssemblyXray
 
         public string[] References { get; set; }
 
-        public ClrVersion ClrVersion { get; set; }
+        public string ClrVersion { get; set; }
 
         public string Version { get; set; }
 
@@ -73,14 +73,6 @@ namespace AssemblyXray
     {
         Debug,
         Release
-    }
-
-    public enum ClrVersion
-    {
-        One,
-        Two,
-        Four,
-        FourClientProfile
     }
 
     public enum AssemblyType
