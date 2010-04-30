@@ -7,7 +7,8 @@ namespace AssemblyXray
     {
         static void Main(string[] args)
         {
-            args = new[] { @"D:\binaries\BackupWorker.exe" };
+            // for adhoc testing
+            //args = new[] { @"C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\Microsoft.Build.Engine.dll" };
 
             #if DEBUG
                 if (args == null || args.Length == 0)

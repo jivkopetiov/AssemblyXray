@@ -1,0 +1,1 @@
+﻿- bug - multiple attributes with the same name are overwritten and only the last one stays

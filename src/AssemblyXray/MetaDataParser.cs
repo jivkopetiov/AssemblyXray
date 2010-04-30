@@ -105,7 +105,7 @@ namespace AssemblyXray
                     value = value.Substring(0, value.Length - 3);
                 }
 
-                dictionary.Add(name, value);
+                dictionary[name] = value;
             }
 
             return dictionary;

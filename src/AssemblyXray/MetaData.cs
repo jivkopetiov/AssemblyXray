@@ -53,9 +53,6 @@ namespace AssemblyXray
                 builder.AppendFormat("    {0,-24}: {1}", pair.Key, pair.Value);
                 builder.AppendLine();
             }
-            builder.AppendLine();
-
-            builder.AppendLine();
 
             return builder.ToString();
         }
