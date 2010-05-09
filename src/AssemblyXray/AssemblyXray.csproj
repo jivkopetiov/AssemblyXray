@@ -116,6 +116,7 @@
     <Compile Include="MetaData.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="MetaDataParser.cs" />
+    <Compile Include="NDesk.Options.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
