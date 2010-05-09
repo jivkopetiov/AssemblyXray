@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
 	<UsingTask
-		TaskName="Rename"
+		TaskName="Move"
 		TaskFactory="CodeTaskFactory"
 		AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
 		<ParameterGroup>
@@ -43,11 +43,20 @@
     <Target Name="Build">
 		<RemoveDir Directories="$(OutputDir)" />
 		<MakeDir Directories="$(OutputDir)" />
-        <MSBuild Projects="$(Src)\AssemblyXray\AssemblyXray.csproj" Targets="Rebuild" Properties="OutputPath=$(OutputDir);Configuration=$(Configuration);"></MSBuild>
+        
+		<MSBuild Projects="$(Src)\AssemblyXray\AssemblyXray.csproj" Targets="Rebuild" Properties="OutputPath=$(OutputDir)\AnyCpu;Configuration=$(Configuration);"></MSBuild>
+		
+		<MSBuild Projects="$(Src)\AssemblyXray\AssemblyXray.csproj" Targets="Rebuild" Properties="OutputPath=$(OutputDir)\x86;PlatformTarget=x86;Configuration=$(Configuration);"></MSBuild>
 
 		<Error Text="FxCopPath is invalid: $(FxCopPath)" Condition="!Exists('$(FxCopPath)')"></Error>
 		
-		<Rename File="$(OutputDir)\AssemblyXray.exe" NewFile="$(OutputDir)\xray.exe" />
+		<Move File="$(OutputDir)\AnyCpu\AssemblyXray.exe" NewFile="$(OutputDir)\xray.exe" />
+		<Move File="$(OutputDir)\AnyCpu\AssemblyXray.exe.config" NewFile="$(OutputDir)\xray.exe.config" />
+		<Move File="$(OutputDir)\x86\AssemblyXray.exe" NewFile="$(OutputDir)\xray32.exe" />
+		<Move File="$(OutputDir)\x86\AssemblyXray.exe.config" NewFile="$(OutputDir)\xray32.exe.config" />
+		<RemoveDir Directories="$(OutputDir)\x86" />
+		<RemoveDir Directories="$(OutputDir)\AnyCpu" />
+		
         <!--<Exec Command="&quot;$(FxCopPath)&quot; /p:$(Build)\rules.FxCop /console /f:$(OutputDir)\AssemblyXray.exe"></Exec>-->
 
     </Target>
